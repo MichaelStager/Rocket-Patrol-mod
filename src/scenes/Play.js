@@ -5,7 +5,8 @@ class Play extends Phaser.Scene {
     }
     
     create() {
-        
+        //TODO: ADD MUSIC HERE
+
         //I think we could change the 640 and 480 to config heights for scaleablity
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0)
 
@@ -101,9 +102,11 @@ class Play extends Phaser.Scene {
         this.timer.text = "Time: " + (this.clock.getRemainingSeconds().toFixed(2));
 
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)){
+          //TODO STOP MUSIC HERE I would think, maybe not so music loops, would need testing.
             this.scene.restart();
         }
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+        //TODO STOP MUSIC HERE
         this.scene.start("menuScene")
 }
         this.starfield.tilePositionX -= 4;

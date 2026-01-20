@@ -1,4 +1,8 @@
-
+//Mods I have implemented so far:
+//  Timer display !3 points!
+// mouse control for rocket and firing !5 points!
+//Time increase when hitting a spaceship, and losing time when missing !5 points!
+// New ui  for pilot facecam and goodbye letter (with randomization on each reset, and added sprite animations) S-tier mod !5 points!
 let config = {
     type: Phaser.AUTO,
     width: 640,
