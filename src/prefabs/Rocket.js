@@ -1,5 +1,4 @@
-//todo: game.input.mousePointer.x to move rocket
-// todo: game.input.activePointer.isDown to fire rocket
+
 
 class Rocket extends Phaser.GameObjects.Sprite
 {

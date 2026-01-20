@@ -15,6 +15,7 @@ class Play extends Phaser.Scene {
         this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4, 'spaceship', 0, 30).setOrigin(0, 0)
         this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + bordePaddling * 2, 'spaceship', 0, 20).setOrigin(0, 0)
         this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + bordePaddling * 4, 'spaceship', 0, 10).setOrigin(0, 0)
+        
         //add pilot sprite for facecam
         this.bgBox =this.add.rectangle(borderUISize, game.config.height - 244, 254, 255 -(borderUISize + bordePaddling), 0xFF0000).setOrigin(0, 0);
         this.curPilot = this.add.image(borderUISize +127, game.config.height - 135, 'pilot1').setOrigin(0.5,0.5);
