@@ -1,3 +1,6 @@
+//todo: game.input.mousePointer.x to move rocket
+// todo: game.input.activePointer.isDown to fire rocket
+
 class Rocket extends Phaser.GameObjects.Sprite
 {
     constructor(scene,x,y,texture,frame){
@@ -5,8 +8,10 @@ class Rocket extends Phaser.GameObjects.Sprite
 
         scene.add.existing(this)
         this.isFiring = false;
-        this.moveSpeed = 2;
+        this.moveSpeed = 4;
         this.sfxRocket = scene.sound.add('sfx-shot')
+       //Used to get a reference to the delayclock
+        this.dClock = 0;
     }
     update(){
         if(!this.isFiring)
@@ -33,6 +38,7 @@ class Rocket extends Phaser.GameObjects.Sprite
         //reset on miss
          if(this.y <= borderUISize *3 + bordePaddling)
         {
+            this.dClock.delay -= 5000; //penalize clock 1 second on miss
         this.isFiring = false;
         this.y = game.config.height - borderUISize - bordePaddling;
         }

@@ -1,3 +1,4 @@
+//TODO: bro add clock.settimeremaun , when you kill someone.
 class Play extends Phaser.Scene {
     constructor() {
         super('playScene')
@@ -49,7 +50,11 @@ class Play extends Phaser.Scene {
         // add rocket (p1)
         this.p1rocket = new Rocket(this, game.config.width / 2, game.config.height - borderUISize - bordePaddling, "rocket").setOrigin(0.5, 0)
 
-        
+        //Create timer
+        this.timer = this.add.text(borderUISize + bordePaddling+275, borderUISize + bordePaddling * 2, "Time: " , {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+        });
         
         
         
@@ -75,13 +80,14 @@ class Play extends Phaser.Scene {
             fixedWidth: 100
         }
         this.gameOver = false;
-        this.scoreLeft = this.add.text((borderUISize + bordePaddling)*11, borderUISize + bordePaddling * 2, this.p1Score, scoreConfig);
+        this.scoreLeft = this.add.text((borderUISize + bordePaddling)*11.8, borderUISize + bordePaddling * 2, this.p1Score, scoreConfig);
         scoreConfig.fixedWidth = 0;
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
             this.add.text(game.config.width / 2, game.config.height / 2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width / 2, game.config.height / 2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
+        this.p1rocket.dClock = this.clock; //give rocket a reference to the clock
         this.curPilot.goodbyeLetter = this.add.text(40, 130, "Hello", {
    fontSize: '20px',
   color: '#ffffff',
@@ -90,7 +96,10 @@ class Play extends Phaser.Scene {
         this.setRandomPilot();
     }
 
-    update() {
+    update() {  
+        //Update timer display
+        this.timer.text = "Time: " + (this.clock.getRemainingSeconds().toFixed(2));
+
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)){
             this.scene.restart();
         }
@@ -108,16 +117,22 @@ class Play extends Phaser.Scene {
             this.p1rocket.reset();
             this.shipExplode(this.ship03);
             this.pilotDeath();
+            this.clock.delay += 1000; // add 1 second to clock on ship explosion
+            
         }
         if (this.checkCollision(this.p1rocket, this.ship02)) {
             this.p1rocket.reset();
             this.shipExplode(this.ship02);
             this.pilotDeath();
+            this.clock.delay += 1000;
+             
         }
         if (this.checkCollision(this.p1rocket, this.ship01)) {
             this.p1rocket.reset();
             this.shipExplode(this.ship01);
             this.pilotDeath();
+            this.clock.delay += 1000;
+            
         }
     }
 
