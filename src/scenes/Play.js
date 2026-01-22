@@ -12,9 +12,10 @@ class Play extends Phaser.Scene {
 
         
           // add spaceships (x3)
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4, 'spaceship', 0, 30).setOrigin(0, 0)
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + bordePaddling * 2, 'spaceship', 0, 20).setOrigin(0, 0)
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + bordePaddling * 4, 'spaceship', 0, 10).setOrigin(0, 0)
+        this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 5, 'spaceship', 0, 30,game.settings.spaceshipSpeed).setOrigin(0, 0)
+        this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 6 + bordePaddling * 2, 'spaceship', 0, 20,game.settings.spaceshipSpeed).setOrigin(0, 0)
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + bordePaddling * 6, 'spaceship', 0, 10,game.settings.spaceshipSpeed).setOrigin(0, 0)
+        this.bonusShip01 = new Spaceship(this, game.config.width, borderUISize * 4, 'spaceship2', 0, 80,game.settings.spaceshipSpeed*3).setOrigin(0,0);
         
         //add pilot sprite for facecam
         this.bgBox =this.add.rectangle(borderUISize, game.config.height - 244, 254, 255 -(borderUISize + bordePaddling), 0xFF0000).setOrigin(0, 0);
@@ -116,6 +117,7 @@ class Play extends Phaser.Scene {
         this.ship01.update()               // update spaceships (x3)
         this.ship02.update()
         this.ship03.update()
+        this.bonusShip01.update()
         }
         if (this.checkCollision(this.p1rocket, this.ship03)) {
             this.p1rocket.reset();
@@ -138,7 +140,15 @@ class Play extends Phaser.Scene {
             this.clock.delay += 1000;
             
         }
-    }
+        if (this.checkCollision(this.p1rocket, this.bonusShip01)) {
+            this.p1rocket.reset();
+            this.shipExplode(this.bonusShip01);
+            this.pilotDeath();
+            this.clock.delay += 2000; //bonus ship gives 2 seconds
+            
+            
+        }
+    }   
 
     checkCollision(rocket, ship) {
         if (rocket.x < ship.x + ship.width && rocket.x + rocket.width > ship.x && rocket.y < ship.y + ship.height && rocket.height + rocket.y > ship.y) {
