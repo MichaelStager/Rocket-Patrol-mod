@@ -15,12 +15,14 @@ class Intro extends Phaser.Scene {
         this.load.audio("sfx-select", "./assets/sfx-select.wav")
         this.load.audio("sfx-explosion", "./assets/sfx-explosion.wav")
         this.load.audio("sfx-shot", "./assets/sfx-shot.wav")
+        this.load.audio("bgm","./assets/bgm.wav")
         this.load.spritesheet("explosion", "./assets/explosion.png", { frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9 })
     
 
     }
 
     create() {
+        this.bgm = this.sound.play("bgm",{loop:true})
         this.introText = 'We have run out of Rockets,\n Perpare for your final mission \n for your lord...\n Space to continue'
         //make background pink for test
         this.cameras.main.setBackgroundColor('#000000');
