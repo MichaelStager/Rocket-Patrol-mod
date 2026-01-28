@@ -36,6 +36,9 @@ class Intro extends Phaser.Scene {
         //Text intro (beta right now just saying hello this is text)
         this.introTextDisplay = this.add.text(game.config.width/2, game.config.height -50,'', { fontFamily: 'Courier', fontSize: '28px', color: '#ffffff', align: 'center' }).setOrigin(0.5);
         this.typewriterEffect();
+
+        //Black rect to overlay to add a fade in effect
+        this.fadeRect = this.add.rectangle(game.config.width/2,game.config.height/2,game.config.width,game.config.height,0x000000 )
         }
     
 
@@ -46,7 +49,7 @@ class Intro extends Phaser.Scene {
         });
 
         //type writer effect for intro text
-        
+        this.fadeRect.alpha -=.01
 
     }
     // might be good to change this later so you pass in the text you want to display, and where to display it (text, textDisplayObject)
