@@ -3,18 +3,7 @@ class Menu extends Phaser.Scene {
         super("menuScene")
     }
     preload() {
-    //     this.load.image("rocket", "./assets/rocket.png")
-    //     this.load.image("spaceship2", "./assets/spaceship2.png")
-    //     this.load.image("spaceship", "./assets/spaceship.png")
-    //     this.load.image("starfield", "./assets/starfield2.png")
-    //     this.load.image("pilot1", "./assets/pilot1.png")
-    //     this.load.image("pilot2", "./assets/pilot2.png")
-    //     this.load.image("pilot3", "./assets/pilot3.png")
-    //     this.load.image("wires", "./assets/WiresBeta.png")
-    //     this.load.audio("sfx-select", "./assets/sfx-select.wav")
-    //     this.load.audio("sfx-explosion", "./assets/sfx-explosion.wav")
-    //     this.load.audio("sfx-shot", "./assets/sfx-shot.wav")
-    //     this.load.spritesheet("explosion", "./assets/explosion.png", { frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9 })
+  
      }
 
     create() {
