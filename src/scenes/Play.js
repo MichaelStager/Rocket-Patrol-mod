@@ -29,7 +29,7 @@ class Play extends Phaser.Scene {
         this.goodbyeLetters = [
             "Dear yoshi Im dead because of you...",
             "FOR THE LORD!!!!!!!! I LEAVE MY SOUL IN HIS NAME!!!",
-            "Dear Mom, I died in a rocket ship accident. Tell Dad I love him."
+            "Dear Mom, I died in a rocket ship accident."
         ];
         
         this.add.rectangle(0, borderUISize + bordePaddling, game.config.width, borderUISize * 2, 0xff0000).setOrigin(0, 0);
@@ -176,7 +176,7 @@ class Play extends Phaser.Scene {
 
     //Flicker the background rec between red and black when ship explodes really fast by changing bg color
     flickerBG(rec){ {
-        for(let i=0; i<60; i++){
+        for(let i=0; i<30; i++){
             this.time.delayedCall(10*i, () => {
                 if(i%2==0){
                     rec.setFillStyle(0x000000)
@@ -196,7 +196,7 @@ class Play extends Phaser.Scene {
         this.tweens.add({
             targets: this.curPilot,
             y: game.config.height + 100,
-            duration: 1000,
+            duration: 500,
             ease: 'Power1',
             onComplete: () => {
       // put them back AFTER the fall finishes
@@ -224,7 +224,7 @@ class Play extends Phaser.Scene {
         this.tweens.add({
             targets: this.curPilot.goodbyeLetter,
             x: borderUISize - 300,
-            duration: 1000,
+            duration: 500,
             ease: 'Power1',
             onComplete: () => {
                 this.curPilot.goodbyeLetter.setX(40)//after sliding in, slide back out after 2 seconds
@@ -233,7 +233,7 @@ class Play extends Phaser.Scene {
         this.tweens.add({
             targets: this.letterbg,
             x: borderUISize - 300,
-            duration: 1000,
+            duration: 500,
             ease: 'Power1',
             onComplete: () => {
                 this.letterbg.setX(borderUISize)//after sliding in, slide back out after 2 seconds
