@@ -8,7 +8,7 @@ let config = {
     type: Phaser.AUTO,
     width: 640,
     height: 480,
-    scene: [ Intro,Menu, , Play]
+    scene: [ PressScreen, Intro,Menu, , Play]
 }
 let game = new Phaser.Game(config); 
 let borderUISize = game.config.height / 15;
