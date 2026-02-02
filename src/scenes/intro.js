@@ -23,7 +23,7 @@ class Intro extends Phaser.Scene {
 
     create() {
         this.bgm = this.sound.play("bgm",{loop:true})
-        this.introText = 'We have run out of Rockets,\n Perpare for your final mission \n for your lord...\n Space to continue'
+        this.introText = 'We have run out of Rockets,\n Perpare for your final mission \n for your lord...\n Press any key to continue'
         //make background pink for test
         this.cameras.main.setBackgroundColor('#000000');
         //The speakers box and speaker image
