@@ -50,7 +50,7 @@ class Intro extends Phaser.Scene {
             this.scene.start('menuScene')
         });
 
-        //type writer effect for intro text
+        //fades the screen 
         this.fadeRect.alpha -=.01
 
     }
