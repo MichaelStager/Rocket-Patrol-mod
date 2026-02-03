@@ -13,6 +13,9 @@
 * This is an S-Tier mod, because I have added procedual redoric to my game, trying to make the player think more on the cost of war, you have to kill your army to win the game, are you winning?
 * Complete reskin s-Tier mod (change background, layout , and added an intro scene) !5 points!
 * There might be some other mods I did but there is no point 
+
+*Note: The sprites for pilots and the "speaker" are still temp, but It will be easy to change later in development if 
+I come back to this prokect.
 */
 
 let config = {

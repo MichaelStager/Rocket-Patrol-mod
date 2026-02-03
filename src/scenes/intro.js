@@ -39,7 +39,7 @@ class Intro extends Phaser.Scene {
         this.introTextDisplay = this.add.text(game.config.width/2, game.config.height -50,'', { fontFamily: 'Courier', fontSize: '28px', color: '#ffffff', align: 'center' }).setOrigin(0.5);
         this.typewriterEffect();
 
-        //Black rect to overlay to add a fade in effect
+        //Black rect to overlay to add a fade-in effect
         this.fadeRect = this.add.rectangle(game.config.width/2,game.config.height/2,game.config.width,game.config.height,0x000000 )
         }
     
